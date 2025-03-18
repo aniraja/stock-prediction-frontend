@@ -10,11 +10,12 @@ const App = () => {
 
   const handlePredict = async () => {
     try {
-      const response = await axios.post('https://stock-prediction-api.onrender.com/predict', {
-
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/predict`, {
         ticker,
         days: parseInt(days),
       });
+      
+      
 
       const predictions = response.data.predictions.map((item) => ({
         date: item.date,
